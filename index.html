@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanya's 2026 Story ❤️</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #000; color: #fff; font-family: 'Poppins', sans-serif; overflow: hidden; height: 100vh; }
+
+        /* Animated Luxury Background */
+        .bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #2b0015 0%, #000 100%);
+            z-index: -2;
+        }
+
+        .container {
+            width: 100%; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+            perspective: 1000px;
+        }
+
+        .page {
+            position: absolute; width: 90%; max-width: 450px; height: 70vh;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 40px; display: none;
+            flex-direction: column; justify-content: center;
+            align-items: center; text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .active { display: flex; }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: #ff388e; margin-bottom: 20px; }
+        p { font-size: 1.2rem; color: #ffdaea; line-height: 1.6; }
+
+        .btn-next {
+            margin-top: 40px; padding: 15px 35px;
+            background: #ff388e; color: white; border: none;
+            border-radius: 50px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(255, 56, 142, 0.4);
+        }
+
+        .progress-bar {
+            position: fixed; top: 20px; width: 80%; height: 5px;
+            background: rgba(255,255,255,0.1); border-radius: 10px;
+        }
+        .progress-fill { height: 100%; background: #ff388e; width: 6.66%; transition: 0.5s; }
+
+        .heart-particle { position: fixed; color: #ff388e; pointer-events: none; z-index: -1; }
+    </style>
+</head>
+<body>
+
+    <div class="bg"></div>
+    <audio id="bgMusic" loop><source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3" type="audio/mpeg"></audio>
+
+    <div class="progress-bar"><div class="progress-fill" id="fill"></div></div>
+
+    <div class="container">
+        <div class="page active" id="p1"><h1>Hey Tanya.. ❤️</h1><p>Pankaj ne tumhare liye ek 15-page ki digital diary banayi hai. Ready?</p><button class="btn-next" onclick="nextPage(2)">Open First Page ✨</button></div>
+        <div class="page" id="p2"><h1>Page 1: 2025</h1><p>Ye saal khatam ho raha hai, par tumhare liye mera pyaar hamesha fresh rahega.</p><button class="btn-next" onclick="nextPage(3)">Next 🌸</button></div>
+        <div class="page" id="p3"><h1>Page 2: My Gift</h1><p>Duniya mein bahut tohfe hain, par tumhare jaisa koi nahi.</p><button class="btn-next" onclick="nextPage(4)">Next 🌸</button></div>
+        <div class="page" id="p4"><h1>Page 3: Smile</h1><p>Tumhari muskurahat mere din ki sabse achi shuruat hai.</p><button class="btn-next" onclick="nextPage(5)">Next 🌸</button></div>
+        <div class="page" id="p5"><h1>Page 4: Support</h1><p>Chahe halaat kaise bhi hon, main hamesha tumhare sath khada hoon.</p><button class="btn-next" onclick="nextPage(6)">Next 🌸</button></div>
+        <div class="page" id="p6"><h1>Page 5: Memories</h1><p>2025 ki wo sari baatein aur haseen pal, hamesha dil ke pas rahenge.</p><button class="btn-next" onclick="nextPage(7)">Next 🌸</button></div>
+        <div class="page" id="p7"><h1>Page 6: Purest Heart</h1><p>Maine aaj tak tumse zyada saaf dil wali ladki nahi dekhi.</p><button class="btn-next" onclick="nextPage(8)">Next 🌸</button></div>
+        <div class="page" id="p8"><h1>Page 7: You are Special</h1><p>Tum sirf meri gf nahi, meri poori duniya ho.</p><button class="btn-next" onclick="nextPage(9)">Next 🌸</button></div>
+        <div class="page" id="p9"><h1>Page 8: Trust</h1><p>Humara rishta bharose ki buniyad par hai, aur ye hamesha mazboot rahega.</p><button class="btn-next" onclick="nextPage(10)">Next 🌸</button></div>
+        <div class="page" id="p10"><h1>Page 9: Motivation</h1><p>Tumhare sapne mere sapne hain. 2026 mein tumhare har dream ko poora karenge.</p><button class="btn-next" onclick="nextPage(11)">Next 🌸</button></div>
+        <div class="page" id="p11"><h1>Page 10: Connection</h1><p>Pankaj aur Tanya ki jodi sabse best hai, haina? ❤️</p><button class="btn-next" onclick="nextPage(12)">Next 🌸</button></div>
+        <div class="page" id="p12"><h1>Page 11: The Secret</h1><p>Pata hai sabse bada sach kya hai? Ki main tumhare bina reh nahi sakta.</p><button class="btn-next" onclick="nextPage(13)">Next 🌸</button></div>
+        <div class="page" id="p13"><h1>Page 12: Almost There</h1><p>Naya saal aane wala hai... bas kuch hi seconds door.</p><button class="btn-next" onclick="nextPage(14)">Next 🌸</button></div>
+        <div class="page" id="p14"><h1>Page 13: The Promise</h1><p>Main wada karta hoon, 2026 mein tumhe duniya ki saari khushiyan dunga.</p><button class="btn-next" onclick="nextPage(15)">Final Surprise 🎇</button></div>
+        <div class="page" id="p15"><h1>HAPPY 2026 TANYA! ❤️</h1><p>Forever Yours... <br> <b>Tanya ❤️ Pankaj</b></p><button class="btn-next" onclick="location.reload()">See Again 💝</button></div>
+    </div>
+
+    <script>
+        let current = 1;
+        function nextPage(num) {
+            if(num === 2) document.getElementById('bgMusic').play();
+            let out = document.getElementById('p' + (num - 1));
+            let inc = document.getElementById('p' + num);
+
+            gsap.to(out, { rotationY: 90, opacity: 0, duration: 0.5, onComplete: () => {
+                out.classList.remove('active');
+                inc.classList.add('active');
+                gsap.fromTo(inc, { rotationY: -90, opacity: 0 }, { rotationY: 0, opacity: 1, duration: 0.6 });
+                document.getElementById('fill').style.width = (num/15 * 100) + '%';
+            }});
+
+            if(num === 15) {
+                const end = Date.now() + 15000;
+                (function frame() {
+                    confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#ff388e', '#ffd700'] });
+                    confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#ff388e', '#ffd700'] });
+                    if (Date.now() < end) requestAnimationFrame(frame);
+                }());
+            }
+        }
+
+        // Floating Hearts Background
+        setInterval(() => {
+            let h = document.createElement('div');
+            h.innerHTML = '❤️';
+            h.className = 'heart-particle';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.top = '100vh';
+            h.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.body.appendChild(h);
+            gsap.to(h, { y: '-110vh', duration: 4 + Math.random() * 3, onComplete: () => h.remove() });
+        }, 400);
+    </script>
+</body>
+</html>
